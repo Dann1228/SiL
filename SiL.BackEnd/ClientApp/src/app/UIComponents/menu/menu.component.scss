@@ -1,0 +1,34 @@
+mat-sidenav-container{
+  width: 100%;
+  height: calc(100% - 120px);
+}
+
+mat-sidenav{
+  mat-nav-list{
+    padding: 0%;
+    padding-bottom: 56px;
+  }
+}
+
+.menu-hide{
+  float: left;
+  position: fixed;
+  height: 100%;
+  z-index: 999;
+
+  .menu-forward{
+    top: 30%;
+    height: 30%;
+    position: inherit;
+
+    button{
+      height: 100%;
+      opacity: 55%;
+
+      .icon-hide{
+        display: none;
+      }
+    }
+  }
+}
+

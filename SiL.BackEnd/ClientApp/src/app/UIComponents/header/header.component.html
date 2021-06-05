@@ -1,0 +1,23 @@
+<mat-toolbar class="app-header" color="primary">
+
+    <a routerLink="./">
+      <!-- <img class="logo" src="assets/img/logo_white.png" [ngClass]="{'imghide': logoIsMini || mobileQuery.matches}">
+      <img class="logo" src="assets/img/logo_mini.png" [ngClass]="{'imghide': !logoIsMini && !mobileQuery.matches}" > -->
+    </a>
+    <span>SiL</span>
+
+    <span class="toolbar-seprator"></span>
+
+    <a class="headertool mr-2">
+      <mat-icon matBadgeColor="warn">email</mat-icon>
+      信件
+    </a>
+    <a routerLink="/user" class="headertool mr-2">
+      <mat-icon>account_box</mat-icon>
+      會員中心
+    </a>
+    <a routerLink="/user" class="headertool mr-2">
+      <mat-icon>exit_to_app</mat-icon>
+      登出
+    </a>
+  </mat-toolbar>

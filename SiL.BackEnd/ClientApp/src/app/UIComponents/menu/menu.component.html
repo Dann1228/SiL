@@ -1,0 +1,60 @@
+<!-- 左側選單 -->
+<mat-sidenav-container>
+    <mat-sidenav (mouseover)="onMenuHover()" (mouseleave)="onMenuLeave()" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      [fixedBottomGap]="50" [opened]="this.isOpenMenu">
+      <mat-nav-list>
+        <span *ngFor="let item of menuItems">
+          <span *ngIf="item.children && item.children.length > 0">
+            <mat-toolbar>
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon>{{item.icon}}</mat-icon>
+                {{item.title}}
+              </div>
+            </mat-toolbar>
+            <span *ngFor="let child1 of item.children">
+              <span *ngIf="item.children && item.children.length > 0">
+                <mat-accordion>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <!-- Cabeceras del submenu -->
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                          <mat-icon>{{child1.icon}}</mat-icon>
+                          {{child1.title}}
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <span *ngFor="let child2 of child1.children">
+                      <span class="menu-block">
+                        <mat-list-item routerLink="{{child2.link}}" routerLinkActive="active">
+                          <!-- Entradas de cada submenú  -->
+                          <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <mat-icon>{{child2.icon}}</mat-icon>
+                            {{child2.title}}
+                          </div>
+                        </mat-list-item>
+                      </span>
+                    </span>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </span>
+            </span>
+          </span>
+        </span>
+      </mat-nav-list>
+    </mat-sidenav>
+
+  <!-- 頁面內容 -->
+  <mat-sidenav-content class="p-0">
+    <ng-container *ngIf="!mobileQuery.matches">
+      <div class="menu-hide">
+        <div class="menu-forward">
+          <button (mouseover)="onMenuHover()" (mouseleave)="onMenuLeave()" mat-icon-button color="primary" (click)="onMenuClick()">
+            <mat-icon [class.invisible]="!this.isShowHideButton" [class.visible]="this.isShowHideButton">{{showHideButtonIcon}}</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
